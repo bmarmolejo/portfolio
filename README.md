@@ -1,30 +1,38 @@
-# Astro Starter Kit: Portfolio
+# Brenda Marmolejo's Portfolio
 
-```sh
-npm create astro@latest -- --template portfolio
-```
+Welcome to the repository for my personal portfolio website! This site showcases my work as a developer and entrepreneur based in Toronto. It highlights my skills, experience, and projects, providing a comprehensive view of my professional background and projects I've created.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/portfolio/devcontainer.json)
+## Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **About Section**: Learn more about my journey, background, and the passions that drive my work.
+- **Projects**: A curated selection of my most notable projects, including detailed descriptions and links to live demos or repositories.
+- **Skills**: An overview of my technical skills, tools, and technologies I work with.
+- **Contact**: A simple way to get in touch with me for collaboration opportunities, project inquiries, or networking.
 
-![portfolio](https://user-images.githubusercontent.com/357379/210779178-a98f0fb7-6b1a-4068-894c-8e1403e26654.jpg)
+## Technologies Used
 
-## 🧞 Commands
+- **Astro**: Leveraging Astro's powerful static site generator capabilities for a fast and optimized web experience.
+- **CSS**: Custom styling to ensure the site is both visually appealing and user-friendly.
+- **Responsive Design**: Fully responsive layout, ensuring a seamless experience across devices.
 
-All commands are run from the root of the project, from a terminal:
+## Getting Started
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+To view the site locally:
 
-## 👀 Want to learn more?
+1. Clone this repository: `git clone https://github.com/bmarmolejo/portfolio.git`
+2. Navigate into the project directory: `cd portfolio`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your browser and visit `http://localhost:4321`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/bmarmolejo/portfolio/issues) for existing requests or to submit your own.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or collaborations, feel free to reach out via the [Contact](https://brendamarmolejo.com/) page on the website or connect with me on [LinkedIn](https://www.linkedin.com/in/bmarmolejo).
