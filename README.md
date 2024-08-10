@@ -12,6 +12,8 @@ Welcome to the repository for my personal portfolio website! This site showcases
 ## Technologies Used
 
 - **Astro**: Leveraging Astro's powerful static site generator capabilities for a fast and optimized web experience.
+- **TypeScript**: Ensuring type safety and robust code, enhancing the development experience.
+- **JavaScript**: Providing dynamic functionality and interactivity throughout the site.
 - **CSS**: Custom styling to ensure the site is both visually appealing and user-friendly.
 - **Responsive Design**: Fully responsive layout, ensuring a seamless experience across devices.
 
@@ -29,10 +31,10 @@ To view the site locally:
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/bmarmolejo/portfolio/issues) for existing requests or to submit your own.
 
-## License
+<!-- ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->
 
 ## Contact
 
-For any inquiries or collaborations, feel free to reach out via the [Contact](https://brendamarmolejo.com/) page on the website or connect with me on [LinkedIn](https://www.linkedin.com/in/bmarmolejo).
+For any inquiries or collaborations, feel free to reach out via the [email](bmarmolejo@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/bmarmolejo).
