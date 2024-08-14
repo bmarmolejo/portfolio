@@ -4,14 +4,14 @@ publishDate: 2020-03-02 00:00:00
 img: /assets/stock-1.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
-  Web application designed to predict the flavor profile of wines based on user inputs like wine type, grape variety, and region.
+   EnoBot is a web application designed to predict the flavor profile of wines based on user inputs like wine type, grape variety, and region. The app provides wine recommendations and food pairings using data fetched dynamically from OpenAI API.
 tags:
-  - Design
-  - Dev
-  - User Testing
+  - React
+  - SASS
+  - APIs
 ---
 
-## Level-two heading
+<!-- ## Level-two heading
 
 > Tell me and I forget. Teach me and I remember. Involve me and I learn.
 
@@ -27,9 +27,12 @@ Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra al
 
 Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla. -->
 
-#### Level-four heading
+#### Github
 
-- We noted this
-- And also this other point
+- Front & Backend: https://github.com/bmarmolejo/enobot
+
+#### Live
+
+- https://enobot.netlify.app/
