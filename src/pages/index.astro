@@ -30,9 +30,12 @@ const projects = (await getCollection("work"))
       <header class="hero">
         <Hero
           title="Hi, I'm Brenda"
-          tagline="I'm a creative full-stack developer, digital entrepreneur, and eCommerce strategist at Maram Hub based in Toronto. I am dedicated to creating groundbreaking solutions that transform the digital landscape. Let's work together to bring your vision to life!"
           align="start"
         >
+        <p>I'm a creative full-stack developer, digital entrepreneur, and eCommerce strategist at <a href="https://maramhub.com">Maram Hub</a>,
+
+          based in Toronto. I am dedicated to creating groundbreaking solutions that transform the digital landscape. Let's work together to bring your vision to life!
+        </p>
           <div class="roles">
             <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
             <Pill><Icon icon="entrepreneur" size="1.33em" /> Entrepreneur</Pill>
@@ -186,6 +189,10 @@ const projects = (await getCollection("work"))
         object-fit: cover;
       }
     }
+
+    a {
+  text-decoration: none;
+}
 
     /* ====================================================== */
 
