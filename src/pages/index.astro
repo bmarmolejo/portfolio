@@ -79,8 +79,8 @@ const highlights = [
             <a class="text-link" href="/work/">View all projects <span aria-hidden="true">↗</span></a>
           </div>
           <div class="highlight-grid">
-            {highlights.map((project, index) => (
-              <article class:list={['highlight-card', { 'highlight-featured': index === 0 }]}>
+            {highlights.map((project) => (
+              <article class="highlight-card">
                 <div class="highlight-image">
                   <img src={project.image} alt={`Preview of ${project.title}`} loading="lazy" decoding="async" width="1600" height="1050" />
                 </div>
@@ -159,18 +159,17 @@ const highlights = [
     .projects-section { padding-block: 4rem; background: var(--gradient-subtle); border-block: 1px solid var(--gray-800); }
     .projects-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem; max-width: none; }
     .projects-heading > div { max-width: 45rem; }
-    .highlight-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
-    .highlight-card { min-width: 0; overflow: hidden; display: grid; border: 1px solid var(--gray-800); border-radius: 1.5rem; background: var(--gray-999); box-shadow: var(--shadow-sm); }
-    .highlight-image { min-width: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: .7rem; background: var(--gray-900); }
-    .highlight-image img { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 1050; object-fit: contain; object-position: center; }
-    
-    .highlight-copy { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; padding: clamp(1.4rem, 2.5vw, 2.2rem); }
+    .highlight-grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1.25rem; }
+    .highlight-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--gray-800); border-radius: 1.5rem; background: var(--gray-999); }
+    .highlight-image { display: block; padding: .8rem; background: var(--gray-900); }
+    .highlight-image img { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; border-radius: .5rem; }
+    .highlight-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: .8rem; padding: 1.5rem; }
     .highlight-label { color: var(--accent-regular); font-size: .72rem; letter-spacing: .12em; font-weight: 800; }
-    .highlight-copy h3 { font-size: clamp(1.45rem, 2.5vw, 2.2rem); }
+    .highlight-copy h3 { font-size: clamp(1.4rem, 2vw, 1.85rem); }
     .highlight-copy p { color: var(--gray-300); line-height: 1.65; flex: 1; }
     .highlight-copy a { color: var(--accent-regular); text-decoration: none; font-weight: 750; }
     .highlight-copy a:hover { text-decoration: underline; }
-    @media (min-width: 55em) { .highlight-grid { grid-template-columns: 1.25fr 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); } .highlight-featured { grid-row: span 2; } .highlight-featured .highlight-image { min-height: 22rem; } .highlight-card:not(.highlight-featured) { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); } .highlight-card:not(.highlight-featured) .highlight-image img { aspect-ratio: 1600 / 1050; object-fit: contain; } .highlight-card:not(.highlight-featured) .highlight-copy { padding: 1.4rem; } .highlight-card:not(.highlight-featured) .highlight-copy h3 { font-size: 1.5rem; } }
+    @media (min-width: 48em) { .highlight-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     .current-work { display: grid; gap: 2.5rem; }
     .current-grid { display: grid; gap: 1rem; }
     .current-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; min-width: 0; padding: 2rem; border: 1px solid var(--gray-800); border-radius: 1.4rem; background: var(--gray-999_40); box-shadow: var(--shadow-sm); }
