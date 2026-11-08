@@ -1,39 +1,116 @@
 ---
 import { getCollection } from 'astro:content';
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
-import Grid from '../components/Grid.astro';
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-);
+const projects = (await getCollection('work')).sort((a,b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const featured = [
+  { title: 'SocialAI by Maram', category: 'AI & Automation', label: 'AI PRODUCT', description: 'An AI-powered platform I developed through Maram Digital Hub to help small businesses plan social media content and strategy.', tags: ['Generative AI', 'Product Development', 'SaaS'], url: 'https://social-ai.maramhub.com/', linkText: 'Visit SocialAI', symbol: '✳' },
+  { title: 'Intelligent Document Processing', category: 'AI & Automation', label: 'CONFIDENTIAL CLIENT PROJECT', description: 'A private solution focused on extracting and organizing information from documents to reduce repetitive manual work.', tags: ['Document Extraction', 'Automation'], symbol: '◈' },
+  { title: 'AI Lead Generation Agents', category: 'AI & Automation', label: 'INTERNAL TOOL', description: 'Prospecting workflows that help discover, organize, and evaluate potential business leads and partnership opportunities.', tags: ['AI Agents', 'Lead Generation'], symbol: '✺' },
+  { title: 'Business Workflow Platform', category: 'Business Solutions', label: 'CONFIDENTIAL CLIENT PROJECT', description: 'A custom application designed to organize specialized business processes. Client identity and implementation details remain private.', tags: ['Web Application', 'Business Operations'], symbol: '▦' },
+  { title: 'Aquora', category: 'Business Solutions', label: 'WEBSITE PROJECT', description: 'A residential water solutions website concept focused on communicating products clearly and making it easy to request information.', tags: ['Web Design', 'Customer Experience'], symbol: '◉' },
+  { title: 'MyMazatlan', category: 'Ventures', label: 'PERSONAL VENTURE', description: 'A digital destination for exploring local businesses, places, and experiences in Mazatlán, Mexico.', tags: ['Directory', 'Local Discovery'], url: 'https://mymazatlan.com/', linkText: 'Visit MyMazatlan', symbol: '✺' },
+  { title: 'GestoríaMX', category: 'Ventures', label: 'DIGITAL VENTURE', description: 'A platform concept around document services, customer discovery, and opportunities for business partnerships.', tags: ['Digital Platform', 'Lead Generation'], url: 'https://gestoriamx.com/', linkText: 'Visit GestoríaMX', symbol: '◇' },
+  { title: 'Maram Digital Hub', category: 'Ventures', label: 'CO-FOUNDED VENTURE', description: 'A digital agency bringing together websites, digital strategy, e-commerce, and practical technology for small businesses.', tags: ['Entrepreneurship', 'Digital Strategy'], url: 'https://maramhub.com/', linkText: 'Visit Maram', symbol: '✳' },
+  { title: 'Osadía', category: 'Ventures', label: 'E-COMMERCE VENTURE', description: 'An e-commerce business shaped by my interests in ethical consumerism, independent brands, and digital retail operations.', tags: ['E-commerce', 'Retail Operations'], url: 'https://beosadia.com/', linkText: 'Visit Osadía', symbol: '◈' },
+];
+const filters = ['All', 'AI & Automation', 'Business Solutions', 'Ventures', 'Software & Experiments'];
 ---
 
-<BaseLayout
-	title="My Work | Brenda Marmolejo"
-	description="Learn about Brenda Marmolejo's most recent projects"
->
-	<div class="stack gap-20">
-		<main class="wrapper stack gap-8">
-			<Hero
-				title="My Work"
-				tagline="See my most recent projects below to get an idea of my past experience."
-				align="start"
-			/>
-			<Grid variant="offset">
-				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
-				}
-			</Grid>
-		</main>
-		<ContactCTA />
-	</div>
+<BaseLayout title="Projects & Ventures | Brenda Marmolejo" description="Explore Brenda Marmolejo's AI products, software projects, business solutions, and entrepreneurial ventures.">
+  <main class="work-page">
+    <header class="wrapper page-heading">
+      <p class="eyebrow">THINGS I'VE BUILT &amp; EXPLORED</p>
+      <h1>Projects &amp; Ventures<span>.</span></h1>
+      <p>Some are experiments. Some are businesses. Others are tools built to solve very real problems. Each one represents something I've been curious enough to try.</p>
+    </header>
+
+    <section class="wrapper portfolio" aria-label="Explore projects">
+      <div class="filter-bar" role="group" aria-label="Filter projects">
+        {filters.map((filter, index) => <button type="button" class:list={['filter-button', { active: index === 0 }]} data-filter={filter} aria-pressed={index === 0}>{filter}</button>)}
+      </div>
+
+      <div class="project-grid">
+        {featured.map((project) => (
+          <article class="project-card" data-category={project.category}>
+            <div class="card-top"><span class="project-symbol" aria-hidden="true">{project.symbol}</span><span class="project-type">{project.label}</span></div>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <div class="tag-row">{project.tags.map(tag => <span>{tag}</span>)}</div>
+            {project.url ? <a href={project.url} target="_blank" rel="noopener noreferrer">{project.linkText} <span aria-hidden="true">↗</span></a> : <span class="private-note">{project.label.includes('CONFIDENTIAL') ? 'Details kept private' : 'Project overview'}</span>}
+          </article>
+        ))}
+        {projects.map(project => (
+          <article class="legacy-card" data-category="Software & Experiments">
+            <PortfolioPreview project={project} />
+            <p>{project.data.description}</p>
+          </article>
+        ))}
+      </div>
+      <p id="empty-state" hidden>No projects in this category yet.</p>
+    </section>
+    <section class="wrapper closing">
+      <p class="eyebrow">THE COMMON THREAD</p>
+      <h2>Different ideas. The same curiosity.</h2>
+      <p>Whether I'm developing an AI tool, improving a business process, or exploring a new venture, I enjoy figuring out how to make an idea useful.</p>
+    </section>
+  </main>
+  <ContactCTA />
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-button');
+    const cards = document.querySelectorAll<HTMLElement>('[data-category]');
+    const empty = document.querySelector<HTMLElement>('#empty-state');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      buttons.forEach(item => {
+        const selected = item === button;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      let count = 0;
+      cards.forEach(card => {
+        const visible = filter === 'All' || card.dataset.category === filter;
+        card.hidden = !visible;
+        if (visible) count++;
+      });
+      if (empty) empty.hidden = count !== 0;
+    }));
+  </script>
+  <style>
+    .work-page { display: grid; gap: clamp(4rem, 8vw, 7rem); padding-block: 4rem 6rem; }
+    .eyebrow { color: var(--accent-regular); font-size: .75rem; font-weight: 750; letter-spacing: .16em; }
+    h1,h2 { font-family: var(--font-brand); }
+    h1 { font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; line-height: 1.05; margin-block: 1.1rem 1.5rem; }
+    h1 span { color: var(--accent-regular); }
+    .page-heading > p:last-child { max-width: 65ch; font-size: clamp(1.05rem, 1.8vw, 1.3rem); color: var(--gray-300); line-height: 1.75; }
+    .portfolio { display: grid; gap: 2rem; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .filter-button { cursor: pointer; border: 1px solid var(--gray-700); border-radius: 999px; padding: .65rem 1rem; background: transparent; color: var(--gray-200); font: inherit; font-size: .87rem; font-weight: 650; }
+    .filter-button:hover { border-color: var(--accent-regular); }
+    .filter-button.active { background: #eae4ff; border-color: #d8ccff; color: #5133a4; }
+    .project-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+    .project-card, .legacy-card { min-width: 0; border: 1px solid var(--gray-800); border-radius: 1.4rem; padding: 1.7rem; background: var(--gray-999_40); box-shadow: var(--shadow-sm); }
+    .project-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%; }
+    .project-symbol { font-size: 2.6rem; color: var(--accent-regular); line-height: 1; }
+    .project-type { color: var(--gray-400); font-size: .67rem; font-weight: 750; letter-spacing: .08em; text-align: right; }
+    .project-card h2 { font-size: clamp(1.4rem, 2.2vw, 1.75rem); line-height: 1.2; }
+    .project-card > p, .legacy-card > p { color: var(--gray-300); line-height: 1.7; flex-grow: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tag-row span { background: #eae4ff; color: #5133a4; border: 1px solid #d8ccff; border-radius: 999px; font-size: .75rem; font-weight: 650; padding: .35rem .7rem; }
+    .project-card a { color: var(--accent-regular); font-weight: 700; text-decoration: none; }
+    .project-card a:hover { text-decoration: underline; }
+    .private-note { color: var(--gray-400); font-size: .85rem; font-weight: 650; }
+    .legacy-card { display: flex; flex-direction: column; gap: 1rem; }
+    .legacy-card :global(a.card) { width: 100%; }
+    .closing { text-align: center; max-width: 52rem; }
+    .closing h2 { font-size: clamp(2.1rem, 4.5vw, 3.8rem); letter-spacing: -.045em; margin-block: .8rem 1.2rem; }
+    .closing > p:last-child { color: var(--gray-300); line-height: 1.8; }
+    [hidden] { display: none !important; }
+    @media (min-width: 45em) { .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 70em) { .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    :global(.theme-dark) .filter-button.active, :global(.theme-dark) .tag-row span { background: #342653; color: #d9c8ff; border-color: #5e488b; }
+  </style>
 </BaseLayout>
