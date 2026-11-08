@@ -25,8 +25,8 @@ const softwareProjects = projects.map((project) => ({
   description: project.data.description.trim(),
   tags: project.data.tags.slice(0, 3),
   image: ({ 'Enobot': '/assets/projects/enobot.webp', 'The Rank': '/assets/projects/the-rank.webp', 'InStock': '/assets/projects/instock.webp', 'Brainflix': '/assets/projects/brainflix.webp', 'Mazatlan': '/assets/projects/mazatlan-condo.webp' } as Record<string, string>)[project.data.title],
-  url: project.data.title === 'Enobot' ? 'https://enobot.netlify.app/' : undefined,
-  linkText: project.data.title === 'Enobot' ? 'Visit Enobot' : undefined,
+  url: project.data.title === 'Enobot' ? 'https://enobot.netlify.app/' : project.data.title === 'Mazatlan' ? 'https://mazatlan.netlify.app/' : undefined,
+  linkText: project.data.title === 'Enobot' ? 'Visit Enobot' : project.data.title === 'Mazatlan' ? 'Visit Mazatlán Condo' : undefined,
   symbol: '⌘',
   slug: project.slug,
 }));
