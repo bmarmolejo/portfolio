@@ -15,6 +15,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/bmarmolejo/', icon: 'linkedin-logo' },
 	{ label: 'GitHub', href: 'https://github.com/bmarmolejo', icon: 'github-logo' },
 	{ label: 'X', href: 'https://x.com/brenmarmo', icon: 'twitter-logo' },
+	{ label: 'Instagram', href: 'https://www.instagram.com/brenmarmo/', icon: 'instagram-logo' },
 	// { label: 'CodePen', href: 'https://codepen.io/me', icon: 'codepen-logo' },
 	// { label: 'dribbble', href: 'https://dribbble.com/me', icon: 'dribbble-logo' },
 	// { label: 'YouTube', href: 'https://www.youtube.com/@me/', icon: 'youtube-logo' },
@@ -65,7 +66,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			<div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
+						<a href={href} class="social" target="_blank" rel="noopener noreferrer" aria-label={label}>
 							<span class="sr-only">{label}</span>
 							<Icon icon={icon} />
 						</a>
@@ -101,7 +102,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			<div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
+						<a href={href} class="social" target="_blank" rel="noopener noreferrer" aria-label={label}>
 							<span class="sr-only">{label}</span>
 							<Icon icon={icon} />
 						</a>
