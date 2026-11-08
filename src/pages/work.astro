@@ -45,7 +45,7 @@ const filters = ['All', 'AI & Automation', 'Business Solutions', 'Ventures', 'So
           </article>
         ))}
         {projects.map(project => (
-          <article class="legacy-card" data-category="Software & Experiments">
+          <article class="legacy-card" data-category={project.data.title.toLowerCase().includes("enobot") ? "AI & Automation" : "Software & Experiments"}>
             <PortfolioPreview project={project} />
             <p>{project.data.description}</p>
           </article>
