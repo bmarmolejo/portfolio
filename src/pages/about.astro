@@ -1,167 +1,136 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
 import ContactCTA from "../components/ContactCTA.astro";
-import Hero from "../components/Hero.astro";
-import Skills from "../components/Skills.astro";
-
+import Icon from "../components/Icon.astro";
 ---
 
 <BaseLayout
-  title="About | Breda Marmolejo"
-  description="About Brenda Marmolejo"
+  title="About Me | Brenda Marmolejo"
+  description="Meet Brenda Marmolejo, an engineer, technologist, entrepreneur and wine enthusiast exploring the intersection of AI, business and creativity."
 >
-  <div class="stack gap-20">
-    <main class="wrapper about">
-      <Hero
-        title="About"
-        tagline="Thank you for visiting! Scroll down to discover more about my background and experience."
-      >
-        <img
-          width="1553"
-          height="873"
-          src="/assets/at-work.png"
-          alt="Brenda Marmolejo Picture"
-        />
-      </Hero>
+  <main class="about-page">
+    <header class="wrapper intro">
+      <div class="intro-copy">
+        <p class="eyebrow">A LITTLE ABOUT ME</p>
+        <h1>Not your typical career path<span>.</span><br />And that's the point.</h1>
+        <p class="lead">I'm Brenda, an engineer turned technologist, entrepreneur, and lifelong learner. I believe the most interesting ideas often happen when different worlds collide.</p>
+        <p>From engineering and business to software, artificial intelligence, and wine, curiosity has taken me in many directions. Rather than choosing just one, I've learned to connect them.</p>
+      </div>
+      <div class="intro-image"><img src="/assets/at-work.png" alt="Brenda working on a project" width="1553" height="873" loading="eager" /></div>
+    </header>
 
-      <section>
-        <h2 class="section-title">Background</h2>
-        <div class="content">
-          <p>
-            I am a driven and detail-oriented professional with over 15 years of
-            experience as an Engineering Consultant across various industries in
-            North and South America. 
-          </p>
-		  <p>
-			My journey into software engineering stems
-            from a passion for logical thinking, problem-solving, and the
-            potential to create innovative solutions that make a difference.
-            Transitioning into software engineering was a natural progression
-            for me. 
-		  </p>
-		  <p>
-			My diverse background, which includes a Masters Degree in
-            Quality Safety and Environment and a Bachelor's degree in Chemical
-            Engineering, has equipped me with a strong analytical and technical
-            foundation. As an e-commerce entrepreneur, I've honed my skills in
-            project management and strategic planning, ensuring a multifaceted
-            approach to challenges and opportunities in the digital landscape.
-		  </p>
-		  <p>
-			I am passionate about artificial intelligence, data science, ethical
-            consumerism, social justice, and the wine industry. My goal is to
-            impact these fields by creating solutions that promote responsible
-            consumerism, empower communities, and enhance user experiences. I
-            believe that technology, when used thoughtfully, can drive positive
-            change and make a significant impact on society.
+    <section class="wrapper story" aria-labelledby="story-title">
+      <div class="section-heading">
+        <p class="eyebrow">THE JOURNEY</p>
+        <h2 id="story-title">A career built on curiosity.</h2>
+      </div>
+      <div class="story-copy">
+        <p>My professional journey began in chemical engineering. For more than 15 years, I worked in engineering consulting across different industries, developing a way of thinking grounded in systems, analysis, safety, and solving complex problems.</p>
+        <p>But I've never been interested in just one discipline. Living and working across different countries introduced me to new perspectives, cultures, and ways of doing business. Over time, that curiosity led me into entrepreneurship and e-commerce, where I could experiment, build, and learn by doing.</p>
+        <p>Eventually, I took that same problem-solving mindset into software development and data science. Today, I'm especially interested in artificial intelligence, digital products, automation, and creating tools that make complicated work simpler.</p>
+        <p>And then there's wine. What started as a personal interest became another field of study, exploration, and connection. For me, wine is as much about people, places, and stories as it is about what's in the glass.</p>
+        <p><strong>The common thread?</strong> I love learning how things work, connecting ideas, and turning what I discover into something useful or memorable.</p>
+      </div>
+    </section>
+
+    <section class="chapter-section" aria-labelledby="chapters-title">
+      <div class="wrapper">
+        <div class="section-heading">
+          <p class="eyebrow">THE DIFFERENT CHAPTERS</p>
+          <h2 id="chapters-title">Different fields. One curious mind.</h2>
         </div>
-      </section>
-      <section>
-        <h2 class="section-title">Education</h2>
-        <div class="content">
-          <p>Software Engineering Diploma from Brainstation.</p>
-		      <p>MSc in Quality, Safety and Environment from University of Magdeburg.</p>
-          <p>Chemical Engineering Degree from Tecnológico de Monterrey.</p>
-          <p>
-            Scientific Computing and Python for Data Science Certificate from WorldQuant University.</p>
-          <p>Berlin Training for International Cooperation at Humboldt University.
-          </p>
-
+        <div class="chapter-grid">
+          <article class="chapter">
+            <span class="chapter-index">01 / THE FOUNDATION</span>
+            <Icon icon="terminal-window" color="var(--accent-regular)" size="2.2rem" gradient />
+            <h3>Engineering &amp; analytical thinking</h3>
+            <p>A foundation in chemical engineering and quality, safety, and environmental management taught me to approach challenges systematically and ask better questions.</p>
+          </article>
+          <article class="chapter">
+            <span class="chapter-index">02 / BUILDING THINGS</span>
+            <Icon icon="entrepreneur" color="var(--accent-regular)" size="2.2rem" gradient />
+            <h3>Entrepreneurship &amp; digital business</h3>
+            <p>Through e-commerce ventures and Maram Digital Hub, I've explored everything from operations and customer experience to digital strategy and product development.</p>
+          </article>
+          <article class="chapter">
+            <span class="chapter-index">03 / WHAT'S NEXT</span>
+            <span class="chapter-symbol" aria-hidden="true">✳</span>
+            <h3>Software, data &amp; AI</h3>
+            <p>Building applications and experimenting with AI, automation, and data-driven solutions gives me new ways to turn ideas into working products.</p>
+          </article>
+          <article class="chapter">
+            <span class="chapter-index">04 / BEYOND WORK</span>
+            <Icon icon="wine" color="var(--accent-regular)" size="2.2rem" gradient />
+            <h3>Wine, culture &amp; connection</h3>
+            <p>As a WSET-certified wine enthusiast, I love exploring wine regions, sharing knowledge, and bringing people together through experiences.</p>
+          </article>
         </div>
-      </section>
-      <section>
-        <h2 class="section-title">Skills</h2>
-        <div class="content">
-          <p>HTML, CSS, JavaScript, Node, React, Express, MySQL, Agile Development, Document Object Model (DOM) APIs,
-			Web APIs, User Authentication, OAuth, Heroku, GitHub, Jest. </p>
-		</p>	
-			eCommerce: Product sourcing, SEO Optimization, Pricing Strategy, B2B & B2C Customer Experience, Online Marketplaces Sales & Operation, Website Management & Conversion Analysis, Domestic & International Shipping, Cost Analysis, Inventory Management, Digital Marketing, Branding.</p>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2 class="section-title">Beyond Coding</h2>
-        <div class="content">
-          <p>
-            <strong>eCommerce Ventures:</strong> In addition to my software expertise, I'm also the founder of two ethical eCommerce stores, <a href="https://www.beosadia.com" target="_blank">Osadia Concept Store</a> and <a href="https://www.trendycircularity.com" target="_blank">Trendy Circularity</a>, where I focus on promoting sustainable fashion and circularity. This allows me to merge my love for technology with my dedication to conscious consumerism.
-          </p>
-          <p>
-            <strong>Co-Founder of Marketing Agency:</strong> I co-founded a boutique marketing agency, <a href="https://www.maramhub.com" target="_blank">Maram Hub</a>, where I use my technical skills and industry knowledge to help businesses thrive online. From building websites to developing digital strategies, we ensure brands stay competitive.
-          </p>
-          <p>
-            <strong>Wine Specialist:</strong> As a WSET-certified wine specialist, I bring a unique flavor to my ventures. My knowledge in this field helps me cultivate niche markets, offering curated experiences through both eCommerce and in-person events. Visit my wine site <a href="https://www.vinoydijo.com" target="_blank">here</a>.
-          </p>
-        </div>
-      </section>
+    <section class="wrapper education" aria-labelledby="learning-title">
+      <div class="section-heading">
+        <p class="eyebrow">ALWAYS LEARNING</p>
+        <h2 id="learning-title">A few things I've studied.</h2>
+        <p>My education reflects the same curiosity that shapes my work.</p>
+      </div>
+      <div class="education-list">
+        <div><span class="edu-area">TECHNOLOGY</span><h3>Software Engineering Diploma</h3><p>BrainStation</p></div>
+        <div><span class="edu-area">DATA</span><h3>Scientific Computing &amp; Python for Data Science</h3><p>WorldQuant University</p></div>
+        <div><span class="edu-area">ENGINEERING</span><h3>MSc, Quality, Safety &amp; Environment</h3><p>University of Magdeburg</p></div>
+        <div><span class="edu-area">ENGINEERING</span><h3>BSc, Chemical Engineering</h3><p>Tecnológico de Monterrey</p></div>
+        <div><span class="edu-area">WINE</span><h3>WSET Level 2 Award in Wines</h3><p>Wine &amp; spirits education</p></div>
+      </div>
+    </section>
 
-    </main>
-    <!-- <Skills /> -->
-
-
-    <ContactCTA />
-  </div>
+    <section class="wrapper personal-note" aria-labelledby="outside-title">
+      <p class="eyebrow">MORE THAN A JOB TITLE</p>
+      <h2 id="outside-title">There's always more to explore<span>.</span></h2>
+      <p>I'm drawn to good conversations, different cultures, thoughtful technology, sustainable ideas, and a great glass of wine. I don't think a career needs to fit neatly into a single box, and I hope this little corner of the internet reflects that.</p>
+      <a href="/work/">See what I've been building <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <ContactCTA />
+  <style>
+    .about-page { display: flex; flex-direction: column; gap: clamp(5rem, 10vw, 9rem); padding-block: 3rem 6rem; overflow: hidden; }
+    .eyebrow { color: var(--accent-regular); font-size: .76rem; font-weight: 750; letter-spacing: .16em; }
+    h1,h2,h3 { font-family: var(--font-brand); }
+    h1 { font-size: clamp(2.8rem, 5.8vw, 5.5rem); letter-spacing: -.055em; line-height: 1.08; margin-block: 1.3rem 2rem; }
+    h1 span, .personal-note h2 span { color: var(--accent-regular); }
+    h2 { font-size: clamp(2.1rem, 4vw, 3.7rem); letter-spacing: -.045em; line-height: 1.14; margin-block: .8rem 1.2rem; }
+    .intro { display: grid; align-items: center; gap: 3rem; }
+    .intro-copy > p:not(.eyebrow) { max-width: 58ch; color: var(--gray-300); line-height: 1.8; margin-bottom: 1.2rem; }
+    .intro-copy .lead { font-size: clamp(1.15rem, 2vw, 1.45rem); color: var(--gray-100) !important; line-height: 1.55 !important; }
+    .intro-image { position: relative; }
+    .intro-image img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; border-radius: 1.8rem; box-shadow: var(--shadow-md); }
+    .intro-image::before { content: ""; position: absolute; inset: 8% -3% -5% 6%; border: 1px solid var(--gray-800); border-radius: 2rem; background: var(--gradient-subtle); transform: rotate(3deg); z-index: -1; }
+    .section-heading { max-width: 50rem; }
+    .section-heading > p:last-child { color: var(--gray-300); line-height: 1.7; }
+    .story { display: grid; gap: 2rem; }
+    .story-copy { display: grid; gap: 1.3rem; color: var(--gray-300); line-height: 1.9; font-size: 1.06rem; }
+    .story-copy strong { color: var(--gray-100); }
+    .chapter-section { padding-block: 5rem; background: var(--gradient-subtle); border-block: 1px solid var(--gray-800); }
+    .chapter-grid { display: grid; gap: 1rem; margin-top: 2.5rem; }
+    .chapter { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; border: 1px solid var(--gray-800); border-radius: 1.4rem; padding: 2rem; background: var(--gray-999_40); }
+    .chapter-index, .edu-area { color: var(--accent-regular); font-size: .72rem; letter-spacing: .12em; font-weight: 750; }
+    .chapter-symbol { color: var(--accent-regular); font-size: 2.5rem; line-height: 1; }
+    .chapter h3 { font-size: 1.45rem; line-height: 1.2; }
+    .chapter p { color: var(--gray-300); line-height: 1.75; }
+    .education { display: grid; gap: 2rem; }
+    .education-list { display: grid; }
+    .education-list > div { padding: 1.4rem 0; border-bottom: 1px solid var(--gray-800); }
+    .education-list h3 { font-size: 1.25rem; margin-block: .5rem .3rem; }
+    .education-list p { color: var(--gray-400); }
+    .personal-note { max-width: 65rem; text-align: center; }
+    .personal-note h2 { max-width: 18ch; margin-inline: auto; }
+    .personal-note > p:not(.eyebrow) { color: var(--gray-300); line-height: 1.85; font-size: 1.1rem; max-width: 65ch; margin-inline: auto; }
+    .personal-note a { display: inline-block; margin-top: 1.7rem; color: var(--accent-regular); font-weight: 700; text-decoration: none; }
+    .personal-note a:hover { text-decoration: underline; }
+    @media (min-width: 50em) {
+      .intro { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
+      .story { grid-template-columns: .8fr 1.2fr; gap: 4rem; }
+      .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .education { grid-template-columns: .8fr 1.2fr; gap: 4rem; }
+    }
+  </style>
 </BaseLayout>
-
-<style>
-  .about {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-  }
-
-  img {
-    margin-top: 1.5rem;
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    color: var(--gray-200);
-  }
-
-  .section-title {
-    grid-column-start: 1;
-    font-size: var(--text-xl);
-    color: var(--gray-0);
-  }
-
-  .content {
-    grid-column: 2 / 4;
-	text-align: justify;
-  }
-
-  .content p {
-  margin-bottom: 1rem;
-}
-
-  .content :global(a) {
-    text-decoration: 1px solid underline transparent;
-    text-underline-offset: 0.25em;
-    transition: text-decoration-color var(--theme-transition);
-  }
-
-  .content :global(a:hover),
-  .content :global(a:focus) {
-    text-decoration-color: currentColor;
-  }
-
-  @media (min-width: 50em) {
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 60% 1fr;
-    }
-
-    .about > :global(:first-child) {
-      grid-column-start: 2;
-    }
-
-    section {
-      display: contents;
-      font-size: var(--text-lg);
-    }
-  }
-</style>
