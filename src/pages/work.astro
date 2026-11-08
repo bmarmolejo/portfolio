@@ -24,9 +24,9 @@ const softwareProjects = projects.map((project) => ({
   label: project.data.title === 'Enobot' ? 'AI WINE APPLICATION' : 'SOFTWARE PROJECT',
   description: project.data.description.trim(),
   tags: project.data.tags.slice(0, 3),
-  image: project.data.title === 'Enobot' ? '/assets/projects/enobot.webp' : undefined,
-  url: undefined,
-  linkText: undefined,
+  image: ({ 'Enobot': '/assets/projects/enobot.webp', 'The Rank': '/assets/projects/the-rank.webp', 'InStock': '/assets/projects/instock.webp', 'Brainflix': '/assets/projects/brainflix.webp', 'Mazatlan': '/assets/projects/mazatlan-condo.webp' } as Record<string, string>)[project.data.title],
+  url: project.data.title === 'Enobot' ? 'https://enobot.netlify.app/' : undefined,
+  linkText: project.data.title === 'Enobot' ? 'Visit Enobot' : undefined,
   symbol: '⌘',
   slug: project.slug,
 }));
