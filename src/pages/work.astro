@@ -38,7 +38,7 @@ const filters = ['All', 'AI & Automation', 'Business Solutions', 'Ventures', 'So
       <div class="project-grid">
         {featured.map((project) => (
           <article class="project-card" data-category={project.category}>
-            {project.image && <div class="browser-preview"><div class="browser-toolbar" aria-hidden="true"><span></span><span></span><span></span></div><img src={project.image} alt={`Screenshot of ${project.title} website or application`} loading="lazy" width="1440" height="850" /></div>}
+            {'image' in project && project.image && <div class="browser-preview"><div class="browser-toolbar" aria-hidden="true"><span></span><span></span><span></span></div><img src={project.image} alt={`Screenshot of ${project.title} website or application`} loading="lazy" width="1440" height="850" /></div>}
             <div class="card-top"><span class="project-symbol" aria-hidden="true">{project.symbol}</span><span class="project-type">{project.label}</span></div>
             <h2>{project.title}</h2>
             <p>{project.description}</p>
