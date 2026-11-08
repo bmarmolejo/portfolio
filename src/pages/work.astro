@@ -64,6 +64,14 @@ const filters = ['All', 'AI & Automation', 'Business Solutions', 'Ventures', 'So
 
       </div>
       <p id="empty-state" hidden>No projects in this category yet.</p>
+      <div class="maram-portfolio-cta">
+        <div>
+          <p class="eyebrow">MORE WORK THROUGH MARAM DIGITAL HUB</p>
+          <h2>Explore more projects we've brought to life.</h2>
+          <p>Discover websites, digital experiences, and creative work developed with my team at Maram Digital Hub.</p>
+        </div>
+        <a href="https://www.maramhub.com/#portfolio" target="_blank" rel="noopener noreferrer">View Maram's Portfolio <span aria-hidden="true">↗</span></a>
+      </div>
     </section>
     <section class="wrapper closing">
       <p class="eyebrow">THE COMMON THREAD</p>
@@ -123,6 +131,12 @@ const filters = ['All', 'AI & Automation', 'Business Solutions', 'Ventures', 'So
     .project-card a { color: var(--accent-regular); font-weight: 700; text-decoration: none; }
     .project-card a:hover { text-decoration: underline; }
     .private-note { color: var(--gray-400); font-size: .85rem; font-weight: 650; }
+    .maram-portfolio-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid var(--gray-800); border-radius: 1.4rem; background: var(--gradient-subtle); }
+    .maram-portfolio-cta > div { max-width: 42rem; }
+    .maram-portfolio-cta h2 { font-size: clamp(1.5rem, 2.7vw, 2.2rem); margin-block: .65rem; }
+    .maram-portfolio-cta p:last-child { color: var(--gray-300); line-height: 1.7; }
+    .maram-portfolio-cta a { display: inline-flex; align-items: center; gap: .7rem; padding: .9rem 1.25rem; border-radius: 999px; background: var(--accent-regular); color: #fff; text-decoration: none; font-weight: 700; white-space: nowrap; transition: transform .2s ease, opacity .2s ease; }
+    .maram-portfolio-cta a:hover { transform: translateY(-2px); opacity: .9; }
     .closing { text-align: center; max-width: 52rem; }
     .closing h2 { font-size: clamp(2.1rem, 4.5vw, 3.8rem); letter-spacing: -.045em; margin-block: .8rem 1.2rem; }
     .closing > p:last-child { color: var(--gray-300); line-height: 1.8; }
