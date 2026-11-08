@@ -8,13 +8,13 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 import ContactCTA from "../components/ContactCTA.astro";
 
 const allProjects = await getCollection("work");
-const featuredNames = ["Enobot", "The Rank", "Mazatlan", "InStock"];
+const featuredNames = ["Enobot", "The Rank", "InStock"];
 const projects = featuredNames
   .map((name) => allProjects.find((project) => project.data.title.toLowerCase() === name.toLowerCase()))
   .filter((project): project is (typeof allProjects)[number] => project !== undefined);
 const featuredProjects = projects.length >= 3
   ? projects
-  : [...allProjects].sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()).slice(0, 4);
+  : [...allProjects].sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()).slice(0, 3);
 ---
 
 <BaseLayout>
@@ -92,24 +92,30 @@ const featuredProjects = projects.length >= 3
         </div>
       </section>
 
-      <section class="wrapper exploring" aria-labelledby="exploring-title">
+      <section class="wrapper current-work" aria-labelledby="current-work-title">
         <div class="section-heading">
-          <p class="eyebrow">ALWAYS LEARNING</p>
-          <h2 id="exploring-title">Currently exploring<span class="accent">.</span></h2>
-          <p>Some of the things keeping my curiosity busy lately.</p>
+          <p class="eyebrow">ON MY DESK LATELY</p>
+          <h2 id="current-work-title">What I'm working on<span class="accent">.</span></h2>
+          <p>A peek at the ideas and projects I'm building, developing, and refining right now.</p>
         </div>
-        <div class="exploring-grid">
-          <article class="exploring-item">
-            <span class="exploring-symbol" aria-hidden="true">✳</span>
-            <div><h3>Artificial intelligence</h3><p>AI agents, model evaluation, and useful applications of emerging technology.</p></div>
+        <div class="current-grid">
+          <article class="current-card">
+            <div class="current-top"><span class="project-symbol" aria-hidden="true">✳</span><span class="project-kind">AI PRODUCT</span></div>
+            <h3>SocialAI by Maram</h3>
+            <p>An AI-powered tool helping small businesses create social media strategies and content with less guesswork.</p>
+            <a href="https://social-ai.maramhub.com/" target="_blank" rel="noopener noreferrer">Explore SocialAI <span aria-hidden="true">↗</span></a>
           </article>
-          <article class="exploring-item">
-            <span class="exploring-symbol" aria-hidden="true">◈</span>
-            <div><h3>Data science</h3><p>Finding patterns, asking better questions, and making sense of complex information.</p></div>
+          <article class="current-card">
+            <div class="current-top"><span class="project-symbol" aria-hidden="true">◈</span><span class="project-kind">CONFIDENTIAL CLIENT PROJECT</span></div>
+            <h3>Business Workflow Platform</h3>
+            <p>A custom business application designed to bring structure and efficiency to specialized workflows. Project details are private.</p>
+            <span class="private-label">Private project</span>
           </article>
-          <article class="exploring-item">
-            <span class="exploring-symbol" aria-hidden="true">✺</span>
-            <div><h3>Wine &amp; experiences</h3><p>Wine regions, education, and the experiences that bring people together.</p></div>
+          <article class="current-card">
+            <div class="current-top"><span class="project-symbol" aria-hidden="true">✺</span><span class="project-kind">PERSONAL VENTURE</span></div>
+            <h3>MyMazatlan</h3>
+            <p>Exploring a digital destination for discovering local places, businesses, and experiences in Mazatlán, Mexico.</p>
+            <span class="private-label">In development</span>
           </article>
         </div>
       </section>
@@ -149,22 +155,27 @@ const featuredProjects = projects.length >= 3
     .projects-section { padding-block: 4rem; background: var(--gradient-subtle); border-block: 1px solid var(--gray-800); }
     .projects-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem; max-width: none; }
     .projects-heading > div { max-width: 45rem; }
-    .exploring { display: grid; gap: 2.5rem; }
-    .exploring-grid { display: grid; gap: 1rem; }
-    .exploring-item { display: flex; gap: 1.3rem; padding: 1.5rem; border: 1px solid var(--gray-800); border-radius: 1.2rem; background: var(--gray-999_40); }
-    .exploring-symbol { color: var(--accent-regular); font-size: 2rem; line-height: 1; }
-    .exploring-item h3 { font-size: 1.3rem; margin-bottom: .5rem; }
-    .exploring-item p { color: var(--gray-300); line-height: 1.65; }
+    .current-work { display: grid; gap: 2.5rem; }
+    .current-grid { display: grid; gap: 1rem; }
+    .current-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; min-width: 0; padding: 2rem; border: 1px solid var(--gray-800); border-radius: 1.4rem; background: var(--gray-999_40); box-shadow: var(--shadow-sm); }
+    .current-top { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: .8rem; }
+    .project-symbol { color: var(--accent-regular); font-size: 2.5rem; line-height: 1; }
+    .project-kind { color: var(--gray-400); font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-align: right; }
+    .current-card h3 { font-size: 1.5rem; line-height: 1.2; }
+    .current-card p { color: var(--gray-300); line-height: 1.7; flex: 1; }
+    .current-card a { color: var(--accent-regular); font-weight: 700; text-decoration: none; }
+    .current-card a:hover { text-decoration: underline; }
+    .private-label { color: var(--gray-400); font-size: .9rem; font-weight: 650; }
     @media (min-width: 50em) {
       .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(2rem, 5vw, 5rem); padding-block: 5rem 2rem; }
       .interest-tags { grid-column: 1 / -1; flex-wrap: nowrap; justify-content: center; gap: .6rem; }
       .interest-tags > span { font-size: clamp(.72rem, 1.12vw, .9rem); padding-inline: clamp(.55rem, 1.5vw, 1.1rem); }
       .worlds-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .exploring { grid-template-columns: .85fr 1.15fr; align-items: start; gap: 4rem; }
+      .current-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (prefers-reduced-motion: no-preference) {
-      .world-card, .exploring-item { transition: transform .2s ease, box-shadow .2s ease; }
-      .world-card:hover, .exploring-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+      .world-card, .current-card { transition: transform .2s ease, box-shadow .2s ease; }
+      .world-card:hover, .current-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     }
   </style>
 </BaseLayout>
