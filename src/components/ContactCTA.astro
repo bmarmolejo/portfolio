@@ -1,46 +1,47 @@
 ---
-import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
 ---
 
-<aside>
-	<h2>Ready to collaborate? Let's create something amazing together!</h2>
-	<CallToAction href="mailto:bmarmolejo@gmail.com">
-		Connect with me
-		<Icon icon="paper-plane-tilt" size="1.2em" />
-	</CallToAction>
-</aside>
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-inner">
+    <div class="contact-copy">
+      <p class="eyebrow">SAY HELLO</p>
+      <h2 id="contact-title">Let's connect<span>.</span></h2>
+      <p>Have an idea, a question, or just want to say hello? I'd love to hear from you. Whether it's about technology, business, wine, or something unexpected, my inbox is open.</p>
+      <a href="mailto:bmarmolejo@gmail.com" class="email-link">Or email me directly <span aria-hidden="true">↗</span></a>
+    </div>
+    <form name="personal-contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <input type="hidden" name="form-name" value="personal-contact" />
+      <p class="hidden-field" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+      <div class="form-row">
+        <label>Your name <input name="name" type="text" placeholder="Your name" autocomplete="name" required maxlength="120" /></label>
+        <label>Email address <input name="email" type="email" placeholder="you@example.com" autocomplete="email" required maxlength="254" /></label>
+      </div>
+      <label>Message <textarea name="message" rows="5" placeholder="What's on your mind?" required maxlength="5000"></textarea></label>
+      <button type="submit">Send message <Icon icon="paper-plane-tilt" size="1.1em" /></button>
+      <p class="form-note">Your message goes directly to my Netlify form submissions.</p>
+    </form>
+  </div>
+</section>
 
 <style>
-	aside {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 3rem;
-		border-top: 1px solid var(--gray-800);
-		border-bottom: 1px solid var(--gray-800);
-		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
-
-	h2 {
-		font-size: var(--text-xl);
-		text-align: center;
-		max-width: 15ch;
-	}
-
-	@media (min-width: 50em) {
-		aside {
-			padding: 7.5rem;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
-
-		h2 {
-			font-size: var(--text-3xl);
-			text-align: left;
-		}
-	}
+  .contact { border-block: 1px solid var(--gray-800); padding: clamp(4rem, 8vw, 7rem) 1.5rem; background: var(--gray-999_40); }
+  .contact-inner { max-width: 75rem; margin-inline: auto; display: grid; gap: 3rem; }
+  .eyebrow { color: var(--accent-regular); font-size: .75rem; font-weight: 750; letter-spacing: .16em; }
+  h2 { font-family: var(--font-brand); font-size: clamp(2.6rem, 5vw, 4.5rem); letter-spacing: -.045em; line-height: 1.1; margin-block: .8rem 1.5rem; }
+  h2 span { color: var(--accent-regular); }
+  .contact-copy > p:not(.eyebrow) { color: var(--gray-300); line-height: 1.8; max-width: 48ch; font-size: 1.08rem; }
+  .email-link { display: inline-block; margin-top: 1.5rem; color: var(--accent-regular); font-weight: 700; text-decoration: none; }
+  .email-link:hover { text-decoration: underline; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; padding: clamp(1.3rem, 3vw, 2.5rem); border: 1px solid var(--gray-800); border-radius: 1.5rem; background: var(--gray-999); box-shadow: var(--shadow-sm); }
+  .form-row { display: grid; gap: 1.2rem; }
+  label { display: flex; flex-direction: column; gap: .55rem; color: var(--gray-200); font-weight: 650; font-size: .95rem; }
+  input, textarea { width: 100%; padding: .85rem 1rem; border: 1px solid var(--gray-700); border-radius: .7rem; background: var(--gray-999_40); color: var(--gray-100); font: inherit; font-weight: 400; }
+  textarea { resize: vertical; min-height: 8rem; }
+  input:focus, textarea:focus { outline: 2px solid var(--accent-regular); outline-offset: 2px; }
+  button { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; align-self: flex-start; border: 0; border-radius: 999px; padding: .9rem 1.6rem; background: var(--gradient-accent-orange); color: var(--accent-text-over); font: inherit; font-weight: 750; cursor: pointer; }
+  button:hover { filter: brightness(1.06); }
+  .form-note { color: var(--gray-400); font-size: .8rem; }
+  .hidden-field { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (min-width: 50em) { .contact-inner { grid-template-columns: .85fr 1.15fr; gap: 5rem; } .form-row { grid-template-columns: 1fr 1fr; } }
 </style>
