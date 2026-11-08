@@ -1,39 +1,148 @@
 ---
 import { getCollection } from 'astro:content';
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
-import Grid from '../components/Grid.astro';
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-);
+const projects = (await getCollection('work')).sort((a,b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const featured = [
+  { title: 'SocialAI by Maram', category: 'AI & Automation', label: 'AI PRODUCT', description: 'An AI-powered platform I developed through Maram Digital Hub to help small businesses plan social media content and strategy.', tags: ['Generative AI', 'Product Development', 'SaaS'], url: 'https://social-ai.maramhub.com/', linkText: 'Visit SocialAI', image: '/assets/projects/socialai.webp', symbol: '✳' },
+  { title: 'Intelligent Document Processing', category: 'AI & Automation', label: 'CONFIDENTIAL CLIENT PROJECT', description: 'A private solution focused on extracting and organizing information from documents to reduce repetitive manual work.', tags: ['Document Extraction', 'Automation'], image: '/assets/projects/document-processing-automation.webp', symbol: '◈' },
+  { title: 'AI Lead Generation Agents', category: 'AI & Automation', label: 'INTERNAL TOOL', description: 'AI-assisted prospecting tools for finding, organizing, and evaluating potential clients and business partners, including a lead discovery dashboard for GestoríaMX.', tags: ['AI Agents', 'Lead Generation'], image: '/assets/projects/gestoriamx-agent.webp', symbol: '✺' },
+  { title: 'Business Workflow Platform', category: 'Business Solutions', label: 'CONFIDENTIAL CLIENT PROJECT', description: 'A custom application designed to organize specialized business processes. Client identity and implementation details remain private.', tags: ['Web Application', 'Business Operations'], image: '/assets/projects/business-workflow-management.webp', symbol: '▦' },
+  { title: 'Aquora', category: 'Business Solutions', label: 'WEBSITE PROJECT', description: 'A residential water solutions website concept focused on communicating products clearly and making it easy to request information.', tags: ['Web Design', 'Customer Experience'], image: '/assets/projects/aquora-water-solutions.webp', symbol: '◉' },
+  { title: 'Marmol Biotech', category: 'Business Solutions', label: 'WEBSITE PROJECT', description: 'A modern biotechnology website designed to communicate a scientific concept through a minimal, contemporary digital experience.', tags: ['Biotechnology', 'Web Design'], url: 'https://marmolbiotech.netlify.app/', linkText: 'Visit Marmol Biotech', image: '/assets/projects/marmol-biotech.webp', symbol: '✳' },
+  { title: 'Trendy Circularity', category: 'Ventures', label: 'E-COMMERCE VENTURE', description: 'A circular-commerce venture focused on giving products another opportunity through online resale and marketplace operations.', tags: ['Circular Economy', 'E-commerce'], url: 'https://trendycircularity.com/', linkText: 'Visit Trendy Circularity', image: '/assets/projects/trendy-circularity.webp', symbol: '◉' },
+  { title: 'Enogeeks', category: 'Ventures', label: 'WINE EDUCATION VENTURE', description: 'A wine education and experiences venture bringing together wine, travel, culture, and shared discoveries.', tags: ['Wine Education', 'Experiences'], url: 'https://www.enogeeks.com/', linkText: 'Visit Enogeeks', image: '/assets/projects/enogeeks.webp', symbol: '✺' },
+  { title: 'MyMazatlan', category: 'Ventures', label: 'PERSONAL VENTURE', description: 'A digital destination for exploring local businesses, places, and experiences in Mazatlán, Mexico.', tags: ['Directory', 'Local Discovery'], url: 'https://mymazatlan.com/', linkText: 'Visit MyMazatlan', image: '/assets/projects/mymazatlan.webp', symbol: '✺' },
+  { title: 'GestoríaMX', category: 'Ventures', label: 'DIGITAL VENTURE', description: 'A platform concept around document services, customer discovery, and opportunities for business partnerships.', tags: ['Digital Platform', 'Lead Generation'], url: 'https://gestoriamx.com/', linkText: 'Visit GestoríaMX', image: '/assets/projects/gestoriamx.webp', symbol: '◇' },
+  { title: 'Maram Digital Hub', category: 'Ventures', label: 'CO-FOUNDED VENTURE', description: 'A digital agency bringing together websites, digital strategy, e-commerce, and practical technology for small businesses.', tags: ['Entrepreneurship', 'Digital Strategy'], url: 'https://maramhub.com/', linkText: 'Visit Maram', image: '/assets/projects/maram-digital-hub.webp', symbol: '✳' },
+  { title: 'Osadía', category: 'Ventures', label: 'E-COMMERCE VENTURE', description: 'An e-commerce business shaped by my interests in ethical consumerism, independent brands, and digital retail operations.', tags: ['E-commerce', 'Retail Operations'], url: 'https://beosadia.com/', linkText: 'Visit Osadía', image: '/assets/projects/osadia.webp', symbol: '◈' },
+];
+const softwareProjects = projects.map((project) => ({
+  title: project.data.title === 'Mazatlan' ? 'Mazatlán Condo Website' : project.data.title,
+  category: project.data.title === 'Enobot' ? 'AI & Automation' : 'Software & Experiments',
+  label: project.data.title === 'Enobot' ? 'AI WINE APPLICATION' : 'SOFTWARE PROJECT',
+  description: project.data.description.trim(),
+  tags: project.data.tags.slice(0, 3),
+  image: ({ 'Enobot': '/assets/projects/enobot.webp', 'The Rank': '/assets/projects/the-rank.webp', 'InStock': '/assets/projects/instock.webp', 'Brainflix': '/assets/projects/brainflix.webp', 'Mazatlan': '/assets/projects/mazatlan-condo.webp' } as Record<string, string>)[project.data.title],
+  url: project.data.title === 'Enobot' ? 'https://enobot.netlify.app/' : project.data.title === 'Mazatlan' ? 'https://mazatlan.netlify.app/' : undefined,
+  linkText: project.data.title === 'Enobot' ? 'Visit Enobot' : project.data.title === 'Mazatlan' ? 'Visit Mazatlán Condo' : undefined,
+  symbol: '⌘',
+  slug: project.slug,
+}));
+const allCards = [...featured, ...softwareProjects];
+const filters = ['All', 'AI & Automation', 'Business Solutions', 'Ventures', 'Software & Experiments'];
 ---
 
-<BaseLayout
-	title="My Work | Brenda Marmolejo"
-	description="Learn about Brenda Marmolejo's most recent projects"
->
-	<div class="stack gap-20">
-		<main class="wrapper stack gap-8">
-			<Hero
-				title="My Work"
-				tagline="See my most recent projects below to get an idea of my past experience."
-				align="start"
-			/>
-			<Grid variant="offset">
-				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
-				}
-			</Grid>
-		</main>
-		<ContactCTA />
-	</div>
+<BaseLayout title="Projects & Ventures | Brenda Marmolejo" description="Explore Brenda Marmolejo's AI products, software projects, business solutions, and entrepreneurial ventures.">
+  <main class="work-page">
+    <header class="wrapper page-heading">
+      <p class="eyebrow">THINGS I'VE BUILT &amp; EXPLORED</p>
+      <h1>Projects &amp; Ventures<span>.</span></h1>
+      <p>Some are experiments. Some are businesses. Others are tools built to solve very real problems. Each one represents something I've been curious enough to try.</p>
+    </header>
+
+    <section class="wrapper portfolio" aria-label="Explore projects">
+      <div class="filter-bar" role="group" aria-label="Filter projects">
+        {filters.map((filter, index) => <button type="button" class:list={['filter-button', { active: index === 0 }]} data-filter={filter} aria-pressed={index === 0}>{filter}</button>)}
+      </div>
+
+      <div class="project-grid">
+        {allCards.map((project) => (
+          <article class="project-card" data-category={project.category}>
+            <div class="browser-preview">
+              <div class="browser-toolbar" aria-hidden="true"><span></span><span></span><span></span></div>
+              {project.image ? <img src={project.image} alt={`Screenshot of ${project.title}`} loading="lazy" decoding="async" width="1600" height="1050" /> : <div class="preview-placeholder" aria-label="Project image not available"><span aria-hidden="true">{project.symbol}</span><span>{project.title}</span></div>}
+            </div>
+            <div class="card-top"><span class="project-symbol" aria-hidden="true">{project.symbol}</span><span class="project-type">{project.label}</span></div>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <div class="tag-row">{project.tags.map(tag => <span>{tag}</span>)}</div>
+            {project.url ? <a href={project.url} target="_blank" rel="noopener noreferrer">{project.linkText} <span aria-hidden="true">↗</span></a> : 'slug' in project && project.slug ? <a href={`/work/${project.slug}/`}>View project details <span aria-hidden="true">↗</span></a> : <span class="private-note">{project.label.includes('CONFIDENTIAL') ? 'Details kept private' : 'Project overview'}</span>}
+          </article>
+        ))}
+
+      </div>
+      <p id="empty-state" hidden>No projects in this category yet.</p>
+      <div class="maram-portfolio-cta">
+        <div>
+          <p class="eyebrow">MORE WORK THROUGH MARAM DIGITAL HUB</p>
+          <h2>Explore more projects we've brought to life.</h2>
+          <p>Discover websites, digital experiences, and creative work developed with my team at Maram Digital Hub.</p>
+        </div>
+        <a href="https://www.maramhub.com/#portfolio" target="_blank" rel="noopener noreferrer">View Maram's Portfolio <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <section class="wrapper closing">
+      <p class="eyebrow">THE COMMON THREAD</p>
+      <h2>Different ideas. The same curiosity.</h2>
+      <p>Whether I'm developing an AI tool, improving a business process, or exploring a new venture, I enjoy figuring out how to make an idea useful.</p>
+    </section>
+  </main>
+  <ContactCTA />
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-button');
+    const cards = document.querySelectorAll<HTMLElement>('[data-category]');
+    const empty = document.querySelector<HTMLElement>('#empty-state');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      buttons.forEach(item => {
+        const selected = item === button;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      let count = 0;
+      cards.forEach(card => {
+        const visible = filter === 'All' || card.dataset.category === filter;
+        card.hidden = !visible;
+        if (visible) count++;
+      });
+      if (empty) empty.hidden = count !== 0;
+    }));
+  </script>
+  <style>
+    .work-page { display: grid; gap: clamp(4rem, 8vw, 7rem); padding-block: 4rem 6rem; }
+    .eyebrow { color: var(--accent-regular); font-size: .75rem; font-weight: 750; letter-spacing: .16em; }
+    h1,h2 { font-family: var(--font-brand); }
+    h1 { font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; line-height: 1.05; margin-block: 1.1rem 1.5rem; }
+    h1 span { color: var(--accent-regular); }
+    .page-heading > p:last-child { max-width: 65ch; font-size: clamp(1.05rem, 1.8vw, 1.3rem); color: var(--gray-300); line-height: 1.75; }
+    .portfolio { display: grid; gap: 2rem; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .filter-button { cursor: pointer; border: 1px solid var(--gray-700); border-radius: 999px; padding: .65rem 1rem; background: transparent; color: var(--gray-200); font: inherit; font-size: .87rem; font-weight: 650; }
+    .filter-button:hover { border-color: var(--accent-regular); }
+    .filter-button.active { background: #eae4ff; border-color: #d8ccff; color: #5133a4; }
+    .project-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+    .project-card { min-width: 0; border: 1px solid var(--gray-800); border-radius: 1.4rem; padding: 1.7rem; background: var(--gray-999_40); box-shadow: var(--shadow-sm); }
+    .project-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+    .browser-preview { width: 100%; overflow: hidden; border: 1px solid var(--gray-800); border-radius: .9rem; background: var(--gray-900); }
+    .browser-toolbar { display: flex; align-items: center; gap: .35rem; padding: .65rem .8rem; border-bottom: 1px solid var(--gray-800); background: var(--gray-900); }
+    .browser-toolbar span { width: .48rem; height: .48rem; border-radius: 50%; background: var(--gray-600); }
+    .browser-preview img { display: block; width: 100%; aspect-ratio: 1600 / 1050; object-fit: contain; object-position: center; }
+    .preview-placeholder { aspect-ratio: 1600 / 1050; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; padding: 1.5rem; text-align: center; background: var(--gradient-subtle); color: var(--gray-300); font-family: var(--font-brand); font-weight: 650; }
+    .preview-placeholder span:first-child { color: var(--accent-regular); font-size: 3rem; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%; }
+    .project-symbol { font-size: 2.6rem; color: var(--accent-regular); line-height: 1; }
+    .project-type { color: var(--gray-400); font-size: .67rem; font-weight: 750; letter-spacing: .08em; text-align: right; }
+    .project-card h2 { font-size: clamp(1.4rem, 2.2vw, 1.75rem); line-height: 1.2; }
+    .project-card > p { color: var(--gray-300); line-height: 1.7; flex-grow: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tag-row span { background: #eae4ff; color: #5133a4; border: 1px solid #d8ccff; border-radius: 999px; font-size: .75rem; font-weight: 650; padding: .35rem .7rem; }
+    .project-card a { color: var(--accent-regular); font-weight: 700; text-decoration: none; }
+    .project-card a:hover { text-decoration: underline; }
+    .private-note { color: var(--gray-400); font-size: .85rem; font-weight: 650; }
+    .maram-portfolio-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid var(--gray-800); border-radius: 1.4rem; background: var(--gradient-subtle); }
+    .maram-portfolio-cta > div { max-width: 42rem; }
+    .maram-portfolio-cta h2 { font-size: clamp(1.5rem, 2.7vw, 2.2rem); margin-block: .65rem; }
+    .maram-portfolio-cta p:last-child { color: var(--gray-300); line-height: 1.7; }
+    .maram-portfolio-cta a { display: inline-flex; align-items: center; gap: .7rem; padding: .9rem 1.25rem; border-radius: 999px; background: var(--accent-regular); color: #fff; text-decoration: none; font-weight: 700; white-space: nowrap; transition: transform .2s ease, opacity .2s ease; }
+    .maram-portfolio-cta a:hover { transform: translateY(-2px); opacity: .9; }
+    .closing { text-align: center; max-width: 52rem; }
+    .closing h2 { font-size: clamp(2.1rem, 4.5vw, 3.8rem); letter-spacing: -.045em; margin-block: .8rem 1.2rem; }
+    .closing > p:last-child { color: var(--gray-300); line-height: 1.8; }
+    [hidden] { display: none !important; }
+    @media (min-width: 45em) { .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 70em) { .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    :global(.theme-dark) .filter-button.active, :global(.theme-dark) .tag-row span { background: #342653; color: #d9c8ff; border-color: #5e488b; }
+  </style>
 </BaseLayout>
