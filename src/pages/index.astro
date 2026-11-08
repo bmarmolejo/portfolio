@@ -161,16 +161,16 @@ const highlights = [
     .projects-heading > div { max-width: 45rem; }
     .highlight-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
     .highlight-card { min-width: 0; overflow: hidden; display: grid; border: 1px solid var(--gray-800); border-radius: 1.5rem; background: var(--gray-999); box-shadow: var(--shadow-sm); }
-    .highlight-image { min-width: 0; overflow: hidden; background: var(--gray-900); }
-    .highlight-image img { display: block; width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform .3s ease; }
-    .highlight-card:hover .highlight-image img { transform: scale(1.025); }
+    .highlight-image { min-width: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: .7rem; background: var(--gray-900); }
+    .highlight-image img { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 1050; object-fit: contain; object-position: center; }
+    
     .highlight-copy { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; padding: clamp(1.4rem, 2.5vw, 2.2rem); }
     .highlight-label { color: var(--accent-regular); font-size: .72rem; letter-spacing: .12em; font-weight: 800; }
     .highlight-copy h3 { font-size: clamp(1.45rem, 2.5vw, 2.2rem); }
     .highlight-copy p { color: var(--gray-300); line-height: 1.65; flex: 1; }
     .highlight-copy a { color: var(--accent-regular); text-decoration: none; font-weight: 750; }
     .highlight-copy a:hover { text-decoration: underline; }
-    @media (min-width: 55em) { .highlight-grid { grid-template-columns: 1.25fr 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); } .highlight-featured { grid-row: span 2; } .highlight-featured .highlight-image { min-height: 22rem; } .highlight-card:not(.highlight-featured) { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); } .highlight-card:not(.highlight-featured) .highlight-image img { aspect-ratio: auto; } .highlight-card:not(.highlight-featured) .highlight-copy { padding: 1.4rem; } .highlight-card:not(.highlight-featured) .highlight-copy h3 { font-size: 1.5rem; } }
+    @media (min-width: 55em) { .highlight-grid { grid-template-columns: 1.25fr 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); } .highlight-featured { grid-row: span 2; } .highlight-featured .highlight-image { min-height: 22rem; } .highlight-card:not(.highlight-featured) { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); } .highlight-card:not(.highlight-featured) .highlight-image img { aspect-ratio: 1600 / 1050; object-fit: contain; } .highlight-card:not(.highlight-featured) .highlight-copy { padding: 1.4rem; } .highlight-card:not(.highlight-featured) .highlight-copy h3 { font-size: 1.5rem; } }
     .current-work { display: grid; gap: 2.5rem; }
     .current-grid { display: grid; gap: 1rem; }
     .current-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; min-width: 0; padding: 2rem; border: 1px solid var(--gray-800); border-radius: 1.4rem; background: var(--gray-999_40); box-shadow: var(--shadow-sm); }
