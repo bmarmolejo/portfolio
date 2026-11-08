@@ -30,10 +30,10 @@ const featuredProjects = projects.length >= 3
           into ideas, and ideas into meaningful projects.
         </p>
         <div class="interest-tags" aria-label="My interests">
-          <span>AI &amp; Technology</span>
-          <span>Entrepreneurship</span>
-          <span>Wine &amp; Culture</span>
-          <span>Data &amp; Innovation</span>
+          <span class="tag-ai"><Icon icon="terminal-window" size="1.15em" /> AI &amp; Technology</span>
+          <span class="tag-business"><Icon icon="entrepreneur" size="1.15em" /> Entrepreneurship</span>
+          <span class="tag-wine"><Icon icon="wine" size="1.15em" /> Wine &amp; Culture</span>
+          <span class="tag-data"><span aria-hidden="true">✳</span> Data &amp; Innovation</span>
         </div>
         <div class="hero-actions">
           <CallToAction href="/work/">Explore my projects <Icon icon="arrow-right" size="1.2em" /></CallToAction>
@@ -42,7 +42,6 @@ const featuredProjects = projects.length >= 3
       </div>
       <div class="portrait-frame">
         <img src="/assets/portrait.jpg" alt="Portrait of Brenda Marmolejo" width="480" height="620" fetchpriority="high" />
-        <span class="portrait-caption">A little bit of everything, always learning.</span>
       </div>
     </header>
 
@@ -130,14 +129,22 @@ const featuredProjects = projects.length >= 3
     .hero-statement { font-family: var(--font-brand); font-size: clamp(1.45rem, 3vw, 2.6rem); font-weight: 650; line-height: 1.24; letter-spacing: -.025em; }
     .hero-intro { max-width: 56ch; margin-top: 1.5rem; font-size: clamp(1rem, 1.5vw, 1.17rem); line-height: 1.75; color: var(--gray-300); }
     .interest-tags { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.75rem; }
-    .interest-tags span { padding: .48rem .82rem; border: 1px solid var(--gray-700); border-radius: 999px; color: var(--gray-200); background: var(--gray-999_40); font-size: .82rem; }
+    .interest-tags span { display: inline-flex; align-items: center; gap: .5rem; padding: .62rem 1rem; border: 1px solid transparent; border-radius: 999px; font-size: .86rem; font-weight: 650; transition: transform .2s ease, box-shadow .2s ease; }
+    .interest-tags span:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .interest-tags .tag-ai { background: #eae4ff; color: #5133a4; border-color: #d8ccff; }
+    .interest-tags .tag-business { background: #ffebdb; color: #99531e; border-color: #f9d1ac; }
+    .interest-tags .tag-wine { background: #f8e2ec; color: #963e67; border-color: #f0bfd5; }
+    .interest-tags .tag-data { background: #dcf4ee; color: #176c59; border-color: #afe6d6; }
+    :global(.theme-dark) .interest-tags .tag-ai { background: #342653; color: #d9c8ff; border-color: #5e488b; }
+    :global(.theme-dark) .interest-tags .tag-business { background: #493321; color: #ffdab6; border-color: #765032; }
+    :global(.theme-dark) .interest-tags .tag-wine { background: #48293a; color: #ffd0e4; border-color: #75425d; }
+    :global(.theme-dark) .interest-tags .tag-data { background: #1c423a; color: #b4eee0; border-color: #336f60; }
     .hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
     .text-link { color: var(--gray-100); text-decoration: none; font-weight: 700; }
     .text-link:hover { color: var(--accent-regular); }
     .portrait-frame { position: relative; width: 100%; max-width: 29rem; justify-self: center; }
     .portrait-frame::before { content: ""; position: absolute; inset: 7% -5% -5% 5%; border-radius: 2rem; background: var(--gradient-subtle); border: 1px solid var(--gray-800); transform: rotate(5deg); z-index: -1; }
     .portrait-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border-radius: 2rem; box-shadow: var(--shadow-md); }
-    .portrait-caption { position: absolute; bottom: 1.2rem; left: 1rem; right: 1rem; padding: .75rem 1rem; border-radius: .75rem; background: var(--gray-999); color: var(--gray-200); font-size: .85rem; text-align: center; box-shadow: var(--shadow-sm); }
     .section-heading { max-width: 50rem; }
     .section-heading h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1.1; letter-spacing: -.045em; margin-block: .7rem 1rem; }
     .section-heading > p:last-child, .projects-heading > div > p:last-child { color: var(--gray-300); font-size: 1.1rem; line-height: 1.7; }
